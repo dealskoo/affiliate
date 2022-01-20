@@ -1,0 +1,15 @@
+{
+    "name": "dealskoo/affiliate",
+    "autoload": {
+        "psr-4": {
+            "Dealskoo\\Affiliate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jabber",
+            "email": "2898117012@qq.com"
+        }
+    ],
+    "require": {}
+}
