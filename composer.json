@@ -1,15 +1,64 @@
 {
     "name": "dealskoo/affiliate",
+    "description": "Laravel Affiliate Panel",
+    "homepage": "https://www.dealskoo.com",
+    "support": {
+        "issues": "https://github.com/dealskoo/affiliate/issues",
+        "source": "https://github.com/dealskoo/affiliate"
+    },
+    "keywords": [
+        "Laravel",
+        "Affiliate Panel",
+        "Dealskoo"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Dealskoo\\Affiliate\\": "src/"
+            "Dealskoo\\Affiliate\\": "src/",
+            "Database\\Factories\\Dealskoo\\Affiliate\\Models\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dealskoo\\Affiliate\\Tests\\": "tests/"
         }
     },
     "authors": [
         {
-            "name": "jabber",
-            "email": "2898117012@qq.com"
+            "name": "hadi",
+            "email": "hadi@dealskoo.com",
+            "homepage": "https://www.dealskoo.com"
         }
     ],
-    "require": {}
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
+    },
+    "require": {
+        "php": ">=7.1",
+        "laravel/framework": ">=7.20",
+        "laravolt/avatar": "^4.1",
+        "nwidart/laravel-menus": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.23",
+        "orchestra/canvas": "^6.10",
+        "phpunit/phpunit": "^9.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dealskoo\\Affiliate\\Providers\\AffiliateServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
 }
