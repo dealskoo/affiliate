@@ -1,0 +1,36 @@
+<?php
+
+namespace Dealskoo\Affiliate\Http\Controllers;
+
+use Dealskoo\Affiliate\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class NotificationController extends Controller
+{
+    public function list(Request $request)
+    {
+        $notifications = $request->user()->notifications()->paginate(10);
+        return view('affiliate::notifications', ['notifications' => $notifications]);
+    }
+
+    public function unread(Request $request)
+    {
+        $notifications = $request->user()->unreadNotifications()->paginate(10);
+        return view('affiliate::notifications', ['notifications' => $notifications]);
+    }
+
+    public function show(Request $request, $id)
+    {
+        $notification = $request->user()->notifications()->where('id', $id)->first();
+        if ($notification) {
+            $notification->markAsRead();
+        }
+        return view('affiliate::notification', ['notification' => $notification]);
+    }
+
+    public function allRead(Request $request)
+    {
+        $request->user()->unreadNotifications->markAsRead();
+        return back();
+    }
+}

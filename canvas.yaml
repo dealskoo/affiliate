@@ -1,0 +1,27 @@
+preset: package
+
+namespace: Dealskoo\Affiliate
+user-auth-provider: App\User
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: Dealskoo\Affiliate\Console
+
+model:
+  namespace: Dealskoo\Affiliate\Models
+
+provider:
+  namespace: Dealskoo\Affiliate\Providers
+
+testing:
+  namespace: Dealskoo\Affiliate\Tests

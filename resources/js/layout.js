@@ -497,14 +497,14 @@ function ($) {
     */
     LayoutThemeApp.prototype._saveConfig = function(newConfig) {
         $.extend(this._config, newConfig);
-        sessionStorage.setItem('_SELLER_CONFIG_', JSON.stringify(this._config));
+        sessionStorage.setItem('_AFFILIATE_CONFIG_', JSON.stringify(this._config));
     },
 
     /**
      * Get the stored config
      */
     LayoutThemeApp.prototype._getStoredConfig = function() {
-        var bodyConfig = JSON.parse(sessionStorage.getItem('_SELLER_CONFIG_'));
+        var bodyConfig = JSON.parse(sessionStorage.getItem('_AFFILIATE_CONFIG_'));
         var config = DEFAULT_CONFIG;
         if (bodyConfig) {
             config['sideBarTheme'] = bodyConfig.sideBarTheme ?? 'dark';
