@@ -7,6 +7,7 @@ use Dealskoo\Affiliate\Notifications\EmailChangeNotification;
 use Dealskoo\Affiliate\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 
 class AccountControllerTest extends TestCase
@@ -91,7 +92,7 @@ class AccountControllerTest extends TestCase
         $password = '12345678';
         $new_password = '23456789';
         $affiliate = affiliate::factory()->create();
-        $affiliate->password = bcrypt($password);
+        $affiliate->password = Hash::make($password);
         $affiliate->save();
         $response = $this->actingAs($affiliate, 'affiliate')->post(route('affiliate.account.password'), [
             'password' => $password,

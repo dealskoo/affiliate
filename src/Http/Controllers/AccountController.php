@@ -5,6 +5,7 @@ namespace Dealskoo\Affiliate\Http\Controllers;
 use Dealskoo\Affiliate\Notifications\EmailChangeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\throwException;
@@ -80,7 +81,7 @@ class AccountController extends Controller
             ]);
         } else {
             $affiliate = $request->user();
-            $affiliate->password = bcrypt($request->input('new_password'));
+            $affiliate->password = Hash::make($request->input('new_password'));
             $affiliate->save();
             return back()->with('success', __('affiliate::affiliate.update_success'));
         }
