@@ -15,7 +15,7 @@ class EmailChangeNotification extends Notification
 {
     use Queueable;
 
-    public $url;
+    public $url = '';
 
     /**
      * Create a new notification instance.
