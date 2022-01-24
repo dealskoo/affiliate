@@ -31,7 +31,7 @@
             <h2 class="mb-3">{{ __('Welcome to the affiliate platform!') }}</h2>
             <p class="lead">
                 <i class="mdi mdi-format-quote-open"></i>
-                {{ __('Committed to providing affiliates with marketing solutions') }}
+                {{ __('Create new entrepreneurs. Earn more than just commission.') }}
                 <i class="mdi mdi-format-quote-close"></i>
             </p>
             <p>
