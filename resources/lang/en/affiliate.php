@@ -72,4 +72,6 @@ return [
     'affiliate_information' => 'Affiliate information',
     'edit_affiliate' => 'Edit Affiliate',
     'status' => 'Status',
+    'auth_title' => 'Welcome to the affiliate platform!',
+    'auth_description' => 'Create new entrepreneurs. Earn more than just commission.',
 ];

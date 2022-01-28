@@ -28,10 +28,10 @@
     <!-- Auth fluid right content -->
     <div class="auth-fluid-right text-center">
         <div class="auth-user-testimonial">
-            <h2 class="mb-3">{{ __('Welcome to the affiliate platform!') }}</h2>
+            <h2 class="mb-3">{{ __('affiliate::affiliate.auth_title') }}</h2>
             <p class="lead">
                 <i class="mdi mdi-format-quote-open"></i>
-                {{ __('Create new entrepreneurs. Earn more than just commission.') }}
+                {{ __('affiliate::affiliate.auth_description') }}
                 <i class="mdi mdi-format-quote-close"></i>
             </p>
             <p>
