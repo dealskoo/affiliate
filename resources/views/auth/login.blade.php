@@ -48,7 +48,7 @@
                     <label for="password" class="form-label">{{ __('affiliate::auth.password') }}</label>
                     <div class="input-group">
                         <input class="form-control" type="password" required="" id="password" name="password"
-                               min="{{ config('affiliate.password_length') }}" tabindex="2"
+                               minlength="{{ config('affiliate.password_length') }}" tabindex="2"
                                placeholder="{{ __('affiliate::auth.password_placeholder') }}">
                         <div class="input-group-text" data-password="false">
                             <span class="password-eye"></span>

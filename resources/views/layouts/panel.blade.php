@@ -65,7 +65,7 @@
                             </div>
                         </li>
                         @php
-                            $locale_code = session('affiliate_locale','en');
+                            $locale_code = session('affiliate_locale',config('app.locale'));
                             $locale = config('affiliate.languages')[$locale_code];
                         @endphp
                         <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">

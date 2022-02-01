@@ -47,7 +47,7 @@
                                            class="form-label">{{ __('affiliate::affiliate.password') }}</label>
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="password" required
-                                               min="{{ config('affiliate.password_length') }}" name="password" autofocus
+                                               minlength="{{ config('affiliate.password_length') }}" name="password" autofocus
                                                tabindex="1"
                                                placeholder="{{ __('affiliate::affiliate.password_placeholder') }}">
                                         <div class="input-group-text" data-password="false">
@@ -65,7 +65,7 @@
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="new_password"
                                                name="new_password"
-                                               min="{{ config('affiliate.password_length') }}" tabindex="2"
+                                               minlength="{{ config('affiliate.password_length') }}" tabindex="2"
                                                placeholder="{{ __('affiliate::affiliate.new_password_placeholder') }}">
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
@@ -82,7 +82,7 @@
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="confirm_new_password"
                                                name="new_password_confirmation" required tabindex="3"
-                                               min="{{ config('affiliate.password_length') }}"
+                                               minlength="{{ config('affiliate.password_length') }}"
                                                placeholder="{{ __('affiliate::affiliate.confirm_new_password_placeholder') }}">
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
