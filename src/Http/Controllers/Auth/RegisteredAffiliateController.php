@@ -22,7 +22,7 @@ class RegisteredAffiliateController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:affiliates'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:affiliates'],
-            'password' => ['required', 'confirmed', Rules\Password::min(config('affiliate.password_length'))],
+            'password' => ['required', 'confirmed', Rules\Password::min(config('auth.password_length'))],
         ]);
 
         $affiliate = Affiliate::create([

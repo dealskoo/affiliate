@@ -8,7 +8,6 @@ return [
     'logo_dark' => '/vendor/affiliate/images/logo_dark.svg',
     'logo_sm' => '/vendor/affiliate/images/logo_sm.svg',
     'logo_sm_dark' => '/vendor/affiliate/images/logo_sm_dark.svg',
-    'password_length' => 8,
     'copyright' => '2014 - ' . date('Y') . ' ' . config('app.name'),
     'footer_menus' => [[
         'name' => 'about',

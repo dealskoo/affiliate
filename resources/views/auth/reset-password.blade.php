@@ -20,7 +20,7 @@
             <h4 class="mt-0">{{ __('affiliate::auth.create_new_password') }}</h4>
             <div class="mb-4">
                 @if(empty($errors->all()))
-                    <p class="text-muted mb-0">{{ __('affiliate::auth.create_new_password_tip',['length'=>config('affiliate.password_length')]) }}</p>
+                    <p class="text-muted mb-0">{{ __('affiliate::auth.create_new_password_tip',['length'=>config('auth.password_length')]) }}</p>
                 @else
                     @foreach($errors->all() as $error)
                         <p class="text-danger mb-0">{{ $error }}</p>
@@ -42,7 +42,7 @@
                     <label for="password" class="form-label">{{ __('affiliate::auth.password') }}</label>
                     <div class="input-group">
                         <input class="form-control" type="password" required id="password" name="password"
-                               minlength="{{ config('affiliate.password_length') }}" tabindex="2"
+                               minlength="{{ config('auth.password_length') }}" tabindex="2"
                                placeholder="{{ __('affiliate::auth.password_placeholder') }}">
                         <div class="input-group-text" data-password="false">
                             <span class="password-eye"></span>
@@ -55,7 +55,7 @@
                     <div class="input-group">
                         <input class="form-control" type="password" required id="password_confirmation"
                                name="password_confirmation" tabindex="3"
-                               minlength="{{ config('affiliate.password_length') }}"
+                               minlength="{{ config('auth.password_length') }}"
                                placeholder="{{ __('affiliate::auth.confirm_password_placeholder') }}">
                         <div class="input-group-text" data-password="false">
                             <span class="password-eye"></span>

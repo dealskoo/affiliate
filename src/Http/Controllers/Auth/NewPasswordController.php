@@ -22,7 +22,7 @@ class NewPasswordController extends Controller
         $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::min(config('affiliate.password_length'))],
+            'password' => ['required', 'confirmed', Rules\Password::min(config('auth.password_length'))],
         ]);
 
         $status = Password::broker('affiliates')->reset(

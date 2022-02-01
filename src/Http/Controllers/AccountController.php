@@ -2,13 +2,14 @@
 
 namespace Dealskoo\Affiliate\Http\Controllers;
 
+use Dealskoo\Affiliate\Exceptions\AffiliateException;
 use Dealskoo\Affiliate\Notifications\EmailChangeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use function PHPUnit\Framework\throwException;
+use Illuminate\Validation\Rules;
 
 class AccountController extends Controller
 {
@@ -24,6 +25,9 @@ class AccountController extends Controller
         return back()->with('success', __('affiliate::affiliate.update_success'));
     }
 
+    /**
+     * @throws AffiliateException
+     */
     public function avatar(Request $request)
     {
         $request->validate([
@@ -39,9 +43,8 @@ class AccountController extends Controller
             $affiliate->save();
             return ['url' => Storage::url($path)];
         } else {
-            throwException(__('Please upload file'));
+            throw new AffiliateException(__('Please upload file'));
         }
-        return [];
     }
 
     public function email(Request $request)
@@ -67,9 +70,8 @@ class AccountController extends Controller
     public function password(Request $request)
     {
         $request->validate([
-            'password' => ['required', 'min:' . config('affiliate.password_length')],
-            'new_password' => ['required', 'min:' . config('affiliate.password_length')],
-            'new_password_confirmation' => ['required', 'min:' . config('affiliate.password_length'), 'same:new_password']
+            'password' => ['required', 'min:' . config('auth.password_length')],
+            'new_password' => ['required', 'confirmed', Rules\Password::min(config('auth.password_length'))],
         ]);
 
         if (!$this->guard()->validate([
