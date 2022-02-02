@@ -42,7 +42,7 @@
 
                 <!-- Footer-->
                 <footer class="footer footer-alt">
-                    <p class="text-muted">{{ config('affiliate.copyright') }}</p>
+                    <p class="text-muted">{!! config('affiliate.copyright') !!}</p>
                 </footer>
 
             </div> <!-- end .card-body -->
