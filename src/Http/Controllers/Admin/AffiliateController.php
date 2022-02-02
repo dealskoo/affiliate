@@ -17,7 +17,7 @@ class AffiliateController extends AdminController
         if ($request->ajax()) {
             return $this->table($request);
         } else {
-            return view('affiliate::affiliate.index');
+            return view('affiliate::admin.affiliate.index');
         }
     }
 
@@ -75,7 +75,7 @@ class AffiliateController extends AdminController
             abort(403);
         }
         $affiliate = Affiliate::query()->findOrFail($id);
-        return view('affiliate::affiliate.show', ['affiliate' => $affiliate]);
+        return view('affiliate::admin.affiliate.show', ['affiliate' => $affiliate]);
     }
 
     public function edit(Request $request, $id)
@@ -84,7 +84,7 @@ class AffiliateController extends AdminController
             abort(403);
         }
         $affiliate = Affiliate::query()->findOrFail($id);
-        return view('affiliate::affiliate.edit', ['affiliate' => $affiliate]);
+        return view('affiliate::admin.affiliate.edit', ['affiliate' => $affiliate]);
     }
 
     public function update(Request $request, $id)
