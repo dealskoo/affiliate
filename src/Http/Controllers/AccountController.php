@@ -34,17 +34,13 @@ class AccountController extends Controller
             'file' => ['required', 'image', 'max:1000']
         ]);
 
-        if ($request->hasFile('file')) {
-            $image = $request->file('file');
-            $affiliate = $request->user();
-            $filename = $affiliate->id . '.' . $image->guessExtension();
-            $path = $request->file('file')->storeAs('affiliate/avatars', $filename);
-            $affiliate->avatar = $path;
-            $affiliate->save();
-            return ['url' => Storage::url($path)];
-        } else {
-            throw new AffiliateException(__('Please upload file'));
-        }
+        $image = $request->file('file');
+        $affiliate = $request->user();
+        $filename = $affiliate->id . '.' . $image->guessExtension();
+        $path = $request->file('file')->storeAs('affiliate/avatars', $filename);
+        $affiliate->avatar = $path;
+        $affiliate->save();
+        return ['url' => Storage::url($path)];
     }
 
     public function email(Request $request)
