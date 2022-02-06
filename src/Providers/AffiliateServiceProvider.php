@@ -9,6 +9,8 @@ use Dealskoo\Affiliate\Contracts\Dashboard;
 use Dealskoo\Affiliate\Contracts\Searcher;
 use Dealskoo\Affiliate\Contracts\Support\DefaultDashboard;
 use Dealskoo\Affiliate\Contracts\Support\DefaultSearcher;
+use Dealskoo\Affiliate\Contracts\Support\DefaultWelcome;
+use Dealskoo\Affiliate\Contracts\Welcome;
 use Dealskoo\Affiliate\Menu\AffiliatePresenter;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Menus\Facades\Menu;
@@ -23,6 +25,7 @@ class AffiliateServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/affiliate.php', 'affiliate');
+        $this->app->bind(Welcome::class, DefaultWelcome::class);
         $this->app->bind(Dashboard::class, DefaultDashboard::class);
         $this->app->bind(Searcher::class, DefaultSearcher::class);
         $this->app->singleton('affiliate_menu', function () {

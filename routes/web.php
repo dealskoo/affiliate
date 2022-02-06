@@ -13,6 +13,7 @@ use Dealskoo\Affiliate\Http\Controllers\DashboardController;
 use Dealskoo\Affiliate\Http\Controllers\LocalizationController;
 use Dealskoo\Affiliate\Http\Controllers\NotificationController;
 use Dealskoo\Affiliate\Http\Controllers\SearchController;
+use Dealskoo\Affiliate\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web', 'affiliate_locale'])->prefix(config('affiliate.route.prefix'))->name('affiliate.')->group(function () {
@@ -24,9 +25,7 @@ Route::middleware(['web', 'affiliate_locale'])->prefix(config('affiliate.route.p
     })->name('banned');
 
     Route::middleware(['guest:affiliate'])->group(function () {
-        Route::get('/', function () {
-            return redirect(\route('affiliate.dashboard'), 301);
-        });
+        Route::get('/', [WelcomeController::class, 'handle'])->name('welcome');
 
         Route::get('/register', [RegisteredAffiliateController::class, 'create'])->name('register');
         Route::post('/register', [RegisteredAffiliateController::class, 'store']);
