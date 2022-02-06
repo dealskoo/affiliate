@@ -20,9 +20,7 @@ Route::middleware(['web', 'affiliate_locale'])->prefix(config('affiliate.route.p
 
     Route::get('locale/{locale}', [LocalizationController::class, '__invoke'])->name('locale');
 
-    Route::get('/banned', function () {
-        return view('affiliate::auth.banned');
-    })->name('banned');
+    Route::view('/banned', 'affiliate::auth.banned')->name('banned');
 
     Route::middleware(['guest:affiliate'])->group(function () {
         Route::get('/', [WelcomeController::class, 'handle'])->name('welcome');
@@ -53,25 +51,19 @@ Route::middleware(['web', 'affiliate_locale'])->prefix(config('affiliate.route.p
         Route::middleware(['throttle:6,1'])->post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
 
         Route::prefix('/account')->name('account.')->group(function () {
-            Route::get('/', function () {
-                return view('affiliate::account.profile');
-            })->name('profile');
+            Route::view('/', 'affiliate::account.profile')->name('profile');
 
             Route::post('/', [AccountController::class, 'store'])->name('profile');
 
             Route::post('/avatar', [AccountController::class, 'avatar'])->name('avatar');
 
-            Route::get('/email', function () {
-                return view('affiliate::account.email');
-            })->name('email');
+            Route::view('/email', 'affiliate::account.email')->name('email');
 
             Route::middleware(['throttle:6,1'])->post('/email', [AccountController::class, 'email'])->name('email');
 
             Route::middleware(['signed', 'throttle:6,1'])->get('/email/verify/{hash}', [AccountController::class, 'emailVerify'])->name('email.verify');
 
-            Route::get('/password', function () {
-                return view('affiliate::account.password');
-            })->name('password');
+            Route::view('/password', 'affiliate::account.password')->name('password');
 
             Route::post('/password', [AccountController::class, 'password'])->name('password');
         });
