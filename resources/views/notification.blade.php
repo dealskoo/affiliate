@@ -1,10 +1,5 @@
 @extends('affiliate::layouts.panel')
-
-@if($notification)
-    @section('title',$notification->data['title'])
-@else
-    @section('title',__('affiliate::affiliate.notification'))
-@endif
+@section('title',$notification->data['title'])
 @section('body')
     <div class="row">
         <div class="col-12">
@@ -12,7 +7,8 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a
-                                href="{{ route('affiliate.dashboard') }}">{{ __('affiliate::affiliate.dashboard') }}</a></li>
+                                href="{{ route('affiliate.dashboard') }}">{{ __('affiliate::affiliate.dashboard') }}</a>
+                        </li>
                         <li class="breadcrumb-item"><a
                                 href="{{ route('affiliate.notification.list') }}">{{ __('affiliate::affiliate.notifications') }}</a>
                         </li>
@@ -32,19 +28,15 @@
                     @include('admin::includes.notification-sidebar')
 
                     <div class="page-aside-right">
-                        @if($notification)
-                            <div class="mt-3">
-                                <h5 class="font-18">{{ $notification->data['title'] }}</h5>
-                                <hr>
-                                <div class="d-flex mb-3 mt-1">
-                                    <small>{{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</small>
-                                </div>
-                                @include($notification->data['view'])
+                        <div class="mt-3">
+                            <h5 class="font-18">{{ $notification->data['title'] }}</h5>
+                            <hr>
+                            <div class="d-flex mb-3 mt-1">
+                                <small>{{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</small>
                             </div>
-                            <!-- end .mt-4 -->
-                        @else
-                            @include('affiliate::404')
-                        @endif
+                            @include($notification->data['view'])
+                        </div>
+                        <!-- end .mt-4 -->
                     </div>
                     <!-- end inbox-rightbar-->
                 </div>

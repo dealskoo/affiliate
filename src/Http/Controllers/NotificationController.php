@@ -24,6 +24,8 @@ class NotificationController extends Controller
         $notification = $request->user()->notifications()->where('id', $id)->first();
         if ($notification) {
             $notification->markAsRead();
+        } else {
+            abort(404);
         }
         return view('affiliate::notification', ['notification' => $notification]);
     }
