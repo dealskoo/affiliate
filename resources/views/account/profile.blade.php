@@ -45,7 +45,7 @@
                                 <div class="mb-3">
                                     <label for="name" class="form-label">{{ __('affiliate::affiliate.name') }}</label>
                                     <input type="text" class="form-control" id="name" name="name" required
-                                           value="{{ old('name',AUth::user()->name) }}" autofocus tabindex="1"
+                                           value="{{ old('name',Auth::user()->name) }}" autofocus tabindex="1"
                                            placeholder="{{ __('affiliate::affiliate.name_placeholder') }}">
                                 </div>
                             </div>
