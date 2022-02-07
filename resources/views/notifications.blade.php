@@ -1,7 +1,5 @@
 @extends('affiliate::layouts.panel')
-
 @section('title',__('affiliate::affiliate.notifications'))
-
 @section('body')
     <div class="row">
         <div class="col-12">
@@ -9,7 +7,8 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a
-                                href="{{ route('affiliate.dashboard') }}">{{ __('affiliate::affiliate.dashboard') }}</a></li>
+                                href="{{ route('affiliate.dashboard') }}">{{ __('affiliate::affiliate.dashboard') }}</a>
+                        </li>
                         <li class="breadcrumb-item active">{{ __('affiliate::affiliate.notifications') }}</li>
                     </ol>
                 </div>
@@ -33,7 +32,7 @@
                                         <li @if(!$notification->read_at)class="unread"@endif>
                                             <div class="row">
                                                 <div class="col-lg-10">
-                                                    <a href="{{ route('affiliate.notification.show',$notification) }}">{{ $notification->data['title'] }}</a>
+                                                    <a href="{{ route('affiliate.notification.show',$notification) }}">{{ __($notification->data['title']) }}</a>
                                                 </div>
                                                 <div class="col-lg-2">
                                                     <span>{{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</span>
