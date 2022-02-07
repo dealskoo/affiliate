@@ -74,7 +74,7 @@ Route::middleware(['web', 'affiliate_locale'])->prefix(config('affiliate.route.p
             Route::get('/notifications', [NotificationController::class, 'list'])->name('list');
             Route::get('/notifications/unread', [NotificationController::class, 'unread'])->name('unread');
             Route::get('/notifications/all_read', [NotificationController::class, 'allRead'])->name('all_read');
-            Route::get('/notification/{notification}', [NotificationController::class, 'show'])->name('show');
+            Route::get('/notification/{id}', [NotificationController::class, 'show'])->name('show');
         });
 
         Route::middleware(['password.confirm:affiliate.password.confirm'])->group(function () {
