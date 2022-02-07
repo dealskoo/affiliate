@@ -10,7 +10,8 @@
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
     <!-- third party css -->
-    <link href="{{ asset('/vendor/affiliate/css/vendor/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/vendor/affiliate/css/vendor/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet"
+          type="text/css"/>
     <link href="{{ asset('/vendor/affiliate/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('/vendor/affiliate/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('/vendor/affiliate/css/vendor/select.bootstrap5.css') }}" rel="stylesheet" type="text/css"/>
@@ -123,7 +124,7 @@
                                         <a href="{{ route('affiliate.notification.show',$notification) }}"
                                            class="dropdown-item notify-item">
                                             <div class="notify-icon bg-primary">
-                                                <i class="mdi {{ $notification->data['icon'] }}"></i>
+                                                <i class="{{ $notification->data['icon'] }}"></i>
                                             </div>
                                             <p class="notify-details">{{ $notification->data['title'] }}
                                                 @if(empty($notification->data['message']))
@@ -297,7 +298,8 @@
             <div class="form-check form-switch mb-1">
                 <input type="checkbox" class="form-check-input" name="color-scheme-mode" value="light"
                        id="light-mode-check" checked/>
-                <label class="form-check-label" for="light-mode-check">{{ __('affiliate::affiliate.light_mode') }}</label>
+                <label class="form-check-label"
+                       for="light-mode-check">{{ __('affiliate::affiliate.light_mode') }}</label>
             </div>
 
             <div class="form-check form-switch mb-1">
