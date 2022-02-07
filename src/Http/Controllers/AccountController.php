@@ -25,9 +25,6 @@ class AccountController extends Controller
         return back()->with('success', __('affiliate::affiliate.update_success'));
     }
 
-    /**
-     * @throws AffiliateException
-     */
     public function avatar(Request $request)
     {
         $request->validate([
@@ -66,7 +63,7 @@ class AccountController extends Controller
     public function password(Request $request)
     {
         $request->validate([
-            'password' => ['required', 'min:' . config('auth.password_length')],
+            'password' => ['required', Rules\Password::min(config('auth.password_length'))],
             'new_password' => ['required', 'confirmed', Rules\Password::min(config('auth.password_length'))],
         ]);
 
