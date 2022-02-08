@@ -5,13 +5,11 @@ namespace Dealskoo\Affiliate\Tests\Feature;
 use Dealskoo\Admin\Facades\AdminMenu;
 use Dealskoo\Affiliate\Facades\AffiliateMenu;
 use Dealskoo\Affiliate\Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class MenuTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
+    use RefreshDatabase;
 
     public function test_menu()
     {
