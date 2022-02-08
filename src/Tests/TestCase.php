@@ -5,7 +5,6 @@ namespace Dealskoo\Affiliate\Tests;
 use Dealskoo\Affiliate\Facades\AffiliateMenu;
 use Dealskoo\Affiliate\Providers\AffiliateServiceProvider;
 use Dealskoo\Affiliate\Tests\Http\Kernel;
-use Illuminate\Encryption\Encrypter;
 
 class TestCase extends \Dealskoo\Admin\Tests\TestCase
 {
