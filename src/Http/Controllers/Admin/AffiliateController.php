@@ -11,9 +11,7 @@ class AffiliateController extends AdminController
 {
     public function index(Request $request)
     {
-        if (!$request->user()->canDo('affiliates.index')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('affiliates.index'), 403);
         if ($request->ajax()) {
             return $this->table($request);
         } else {
@@ -71,27 +69,21 @@ class AffiliateController extends AdminController
 
     public function show(Request $request, $id)
     {
-        if (!$request->user()->canDo('affiliates.show')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('affiliates.show'), 403);
         $affiliate = Affiliate::query()->findOrFail($id);
         return view('affiliate::admin.affiliate.show', ['affiliate' => $affiliate]);
     }
 
     public function edit(Request $request, $id)
     {
-        if (!$request->user()->canDo('affiliates.edit')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('affiliates.edit'), 403);
         $affiliate = Affiliate::query()->findOrFail($id);
         return view('affiliate::admin.affiliate.edit', ['affiliate' => $affiliate]);
     }
 
     public function update(Request $request, $id)
     {
-        if (!$request->user()->canDo('affiliates.edit')) {
-            abort(403);
-        }
+        abort_if(!$request->user()->canDo('affiliates.edit'), 403);
         $affiliate = Affiliate::query()->findOrFail($id);
         $affiliate->status = $request->boolean('status', false);
         $affiliate->save();
