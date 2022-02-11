@@ -44,6 +44,20 @@ class AffiliateServiceProvider extends ServiceProvider
             $this->commands([
 
             ]);
+
+            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+
+            $this->publishes([
+                __DIR__ . '/../../config/affiliate.php' => config_path('affiliate.php')
+            ], 'config');
+
+            $this->publishes([
+                __DIR__ . '/../../public' => public_path('vendor/affiliate')
+            ], 'public');
+
+            $this->publishes([
+                __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/affiliate')
+            ], 'lang');
         }
 
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
@@ -51,19 +65,7 @@ class AffiliateServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'affiliate');
 
-        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'affiliate');
-
-        $this->publishes([
-            __DIR__ . '/../../config/affiliate.php' => config_path('affiliate.php')
-        ], 'config');
-        $this->publishes([
-            __DIR__ . '/../../public' => public_path('vendor/affiliate')
-        ], 'public');
-        $this->publishes([
-            __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/affiliate')
-        ], 'lang');
 
         Menu::create('affiliate_navbar', function ($menu) {
             $menu->enableOrdering();
