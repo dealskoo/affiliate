@@ -2,11 +2,27 @@
 
 namespace Dealskoo\Affiliate\Tests;
 
+use Dealskoo\Affiliate\Facades\AffiliateMenu;
 use Dealskoo\Affiliate\Models\Affiliate;
+use Dealskoo\Affiliate\Providers\AffiliateServiceProvider;
 use Dealskoo\Affiliate\Tests\Http\Kernel;
 
 class TestCase extends \Dealskoo\Admin\Tests\TestCase
 {
+    protected function getPackageProviders($app)
+    {
+        return [
+            AffiliateServiceProvider::class
+        ];
+    }
+
+    public function getPackageAliases($app)
+    {
+        return [
+            'AffiliateMenu' => AffiliateMenu::class
+        ];
+    }
+
     protected function getEnvironmentSetUp($app)
     {
         parent::getEnvironmentSetUp($app);
