@@ -25,7 +25,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    @include('admin::includes.notification-sidebar')
+                    @include('affiliate::includes.notification-sidebar')
 
                     <div class="page-aside-right">
                         <div class="mt-3">
