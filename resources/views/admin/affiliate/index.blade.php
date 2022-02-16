@@ -45,7 +45,7 @@
 @section('script')
     <script type="text/javascript">
         $(function () {
-            $('#affiliates_table').dataTable({
+            let table = $('#affiliates_table').dataTable({
                 "processing": true,
                 "serverSide": true,
                 "ajax": "{{ route('admin.affiliates.index') }}",
@@ -66,7 +66,7 @@
                     $('#affiliates_table tr td:nth-child(2)').addClass('table-user');
                     $('#affiliates_table tr td:nth-child(7)').addClass('table-action');
                 }
-            })
+            });
         });
     </script>
 @endsection
