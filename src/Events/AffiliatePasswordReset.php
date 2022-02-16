@@ -2,12 +2,7 @@
 
 namespace Dealskoo\Affiliate\Events;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
+use Dealskoo\Affiliate\Models\Affiliate;
 use Illuminate\Queue\SerializesModels;
 
 class AffiliatePasswordReset
@@ -16,7 +11,7 @@ class AffiliatePasswordReset
 
     public $affiliate;
 
-    public function __construct($affiliate)
+    public function __construct(Affiliate $affiliate)
     {
         $this->affiliate = $affiliate;
     }
