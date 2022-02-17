@@ -2,7 +2,6 @@
 
 namespace Dealskoo\Affiliate\Http\Controllers;
 
-use Dealskoo\Affiliate\Exceptions\AffiliateException;
 use Dealskoo\Affiliate\Notifications\EmailChangeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
