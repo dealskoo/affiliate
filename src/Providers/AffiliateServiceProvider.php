@@ -73,8 +73,12 @@ class AffiliateServiceProvider extends ServiceProvider
             $menu->route('affiliate.dashboard', 'affiliate::affiliate.dashboard', [], ['icon' => 'uil-dashboard me-1']);
         });
 
-        AdminMenu::route('admin.affiliates.index', 'affiliate::affiliate.affiliates', [], ['icon' => 'uil-share-alt', 'permission' => 'affiliates.index'])->order(6);
-        PermissionManager::add(new Permission('affiliates.index', 'Affiliates List'));
+        AdminMenu::dropdown('affiliate::affiliate.affiliates_management', function ($menu) {
+            $menu->route('admin.affiliates.index', 'affiliate::affiliate.affiliates', [], ['permission' => 'affiliates.index'])->order(1);
+        }, ['icon' => 'uil-share-alt', 'permission' => 'affiliates.management'])->order(6);
+
+        PermissionManager::add(new Permission('affiliates.management', 'Affiliates Management'));
+        PermissionManager::add(new Permission('affiliates.index', 'Affiliates List'), 'affiliates.management');
         PermissionManager::add(new Permission('affiliates.show', 'View Affiliate'), 'affiliates.index');
         PermissionManager::add(new Permission('affiliates.edit', 'Edit Affiliate'), 'affiliates.index');
 

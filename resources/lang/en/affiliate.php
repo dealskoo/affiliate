@@ -73,4 +73,5 @@ return [
     'status' => 'Status',
     'auth_title' => 'Welcome to the affiliate platform!',
     'auth_description' => 'Create new entrepreneurs. Earn more than just commission.',
+    'affiliates_management' => 'Affiliates Management',
 ];

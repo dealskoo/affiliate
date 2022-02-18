@@ -71,4 +71,5 @@ return [
     'affiliate_information' => '推广联盟信息',
     'edit_affiliate' => '编辑推广联盟',
     'status' => '状态',
+    'affiliates_management' => '联盟管理',
 ];
