@@ -29,6 +29,12 @@ class AffiliateServiceProvider extends ServiceProvider
         $this->app->bind(Dashboard::class, DefaultDashboard::class);
         $this->app->bind(Searcher::class, DefaultSearcher::class);
         $this->app->singleton('affiliate_menu', function () {
+            Menu::create('affiliate_navbar', function ($menu) {
+                $menu->enableOrdering();
+                $menu->setPresenter(AffiliatePresenter::class);
+                $menu->route('affiliate.dashboard', 'affiliate::affiliate.dashboard', [], ['icon' => 'uil-dashboard me-1']);
+            });
+
             return Menu::instance('affiliate_navbar');
         });
     }
@@ -66,12 +72,6 @@ class AffiliateServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'affiliate');
 
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'affiliate');
-
-        Menu::create('affiliate_navbar', function ($menu) {
-            $menu->enableOrdering();
-            $menu->setPresenter(AffiliatePresenter::class);
-            $menu->route('affiliate.dashboard', 'affiliate::affiliate.dashboard', [], ['icon' => 'uil-dashboard me-1']);
-        });
 
         AdminMenu::dropdown('affiliate::affiliate.affiliates_management', function ($menu) {
             $menu->route('admin.affiliates.index', 'affiliate::affiliate.affiliates', [], ['permission' => 'affiliates.index'])->order(1);
