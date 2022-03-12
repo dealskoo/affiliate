@@ -21159,10 +21159,24 @@ div.dataTables_scrollBody > table > :not(:first-child) {
   margin: auto;
 }
 
+.cover-box {
+  display: block;
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
 .avatar-pic, .file-pic {
   max-width: 100px;
   max-height: 100px;
   display: block;
+}
+
+.file-cover {
+  padding: 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .file-upload, .file-input {
@@ -21181,6 +21195,11 @@ div.dataTables_scrollBody > table > :not(:first-child) {
 .upload-image:hover {
   -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cover-box .upload-image {
+  top: auto;
+  bottom: 0;
 }
 
 .upload-button, .upload-image {
