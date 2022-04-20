@@ -13,10 +13,7 @@ class MenuTest extends TestCase
 
     public function test_menu()
     {
-        $this->assertNotNull(AdminMenu::findBy('title', 'affiliate::affiliate.affiliates_management'));
-        $childs = AdminMenu::findBy('title', 'affiliate::affiliate.affiliates_management')->getChilds();
-        $menu = collect($childs)->where('title', 'affiliate::affiliate.affiliates');
-        $this->assertNotEmpty($menu);
+        $this->assertNotNull(AdminMenu::findBy('title', 'affiliate::affiliate.affiliates'));
         $this->assertNotNull(AffiliateMenu::findBy('title', 'affiliate::affiliate.dashboard'));
     }
 }
