@@ -11,6 +11,7 @@ use Dealskoo\Affiliate\Contracts\Support\DefaultDashboard;
 use Dealskoo\Affiliate\Contracts\Support\DefaultSearcher;
 use Dealskoo\Affiliate\Contracts\Support\DefaultWelcome;
 use Dealskoo\Affiliate\Contracts\Welcome;
+use Dealskoo\Affiliate\Facades\AffiliateMenu;
 use Dealskoo\Affiliate\Menu\AffiliatePresenter;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Menus\Facades\Menu;
@@ -32,7 +33,6 @@ class AffiliateServiceProvider extends ServiceProvider
             Menu::create('affiliate_navbar', function ($menu) {
                 $menu->enableOrdering();
                 $menu->setPresenter(AffiliatePresenter::class);
-                $menu->route('affiliate.dashboard', 'affiliate::affiliate.dashboard', [], ['icon' => 'uil-dashboard me-1']);
             });
 
             return Menu::instance('affiliate_navbar');
@@ -76,5 +76,7 @@ class AffiliateServiceProvider extends ServiceProvider
         PermissionManager::add(new Permission('affiliates.index', 'Affiliates List'));
         PermissionManager::add(new Permission('affiliates.show', 'View Affiliate'), 'affiliates.index');
         PermissionManager::add(new Permission('affiliates.edit', 'Edit Affiliate'), 'affiliates.index');
+
+        AffiliateMenu::route('affiliate.dashboard', 'affiliate::affiliate.dashboard', [], ['icon' => 'uil-dashboard me-1']);
     }
 }
