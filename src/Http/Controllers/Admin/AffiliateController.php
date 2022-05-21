@@ -102,6 +102,6 @@ class AffiliateController extends AdminController
         abort_if(!$request->user()->canDo('affiliates.login'), 403);
         $affiliate = Affiliate::query()->findOrFail($id);
         Auth::guard('affiliate')->login($affiliate);
-        return redirect(route('affiliate.welcome'));
+        return redirect(route('affiliate.dashboard'));
     }
 }
