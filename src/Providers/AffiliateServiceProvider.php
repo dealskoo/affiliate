@@ -76,6 +76,7 @@ class AffiliateServiceProvider extends ServiceProvider
         PermissionManager::add(new Permission('affiliates.index', 'Affiliates List'));
         PermissionManager::add(new Permission('affiliates.show', 'View Affiliate'), 'affiliates.index');
         PermissionManager::add(new Permission('affiliates.edit', 'Edit Affiliate'), 'affiliates.index');
+        PermissionManager::add(new Permission('affiliates.login', 'Login Affiliate'), 'affiliates.login');
 
         AffiliateMenu::route('affiliate.dashboard', 'affiliate::affiliate.dashboard', [], ['icon' => 'uil-dashboard me-1']);
     }

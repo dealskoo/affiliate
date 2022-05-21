@@ -15,5 +15,6 @@ class PermissionTest extends TestCase
         $this->assertNotNull(PermissionManager::getPermission('affiliates.index'));
         $this->assertNotNull(PermissionManager::getPermission('affiliates.show'));
         $this->assertNotNull(PermissionManager::getPermission('affiliates.edit'));
+        $this->assertNotNull(PermissionManager::getPermission('affiliates.login'));
     }
 }

@@ -10,6 +10,7 @@ Route::middleware(['web', 'admin_locale'])->prefix(config('admin.route.prefix'))
     });
 
     Route::middleware(['auth:admin', 'admin_active'])->group(function () {
+        Route::get('affiliates/{id}/login',[AffiliateController::class,'login'])->name('affiliates.login');
         Route::resource('affiliates', AffiliateController::class)->except(['create', 'store', 'destroy']);
     });
 

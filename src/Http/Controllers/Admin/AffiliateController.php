@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Dealskoo\Affiliate\Models\Affiliate;
 use Dealskoo\Admin\Http\Controllers\Controller as AdminController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AffiliateController extends AdminController
 {
@@ -38,6 +39,7 @@ class AffiliateController extends AdminController
         $rows = [];
         $can_view = $request->user()->canDo('affiliates.show');
         $can_edit = $request->user()->canDo('affiliates.edit');
+        $can_login = $request->user()->canDo('affiliates.login');
         foreach ($affiliates as $affiliate) {
             $row = [];
             $row[] = $affiliate->id;
@@ -46,6 +48,11 @@ class AffiliateController extends AdminController
             $row[] = $affiliate->status ? '<span class="badge bg-success">' . __('affiliate::affiliate.active') . '</span>' : '<span class="badge bg-danger">' . __('affiliate::affiliate.inactive') . '</span>';
             $row[] = Carbon::parse($affiliate->created_at)->format('Y-m-d H:i:s');
             $row[] = Carbon::parse($affiliate->updated_at)->format('Y-m-d H:i:s');
+
+            $login_link = '';
+            if ($can_login) {
+                $login_link = '<a href="' . route('admin.affiliates.login', $affiliate) . '" class="action-icon" target="_blank"><i class="mdi mdi-view-dashboard"></i></a>';
+            }
 
             $view_link = '';
             if ($can_view) {
@@ -56,7 +63,7 @@ class AffiliateController extends AdminController
             if ($can_edit) {
                 $edit_link = '<a href="' . route('admin.affiliates.edit', $affiliate) . '" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>';
             }
-            $row[] = $view_link . $edit_link;
+            $row[] = $login_link . $view_link . $edit_link;
             $rows[] = $row;
         }
         return [
@@ -88,5 +95,13 @@ class AffiliateController extends AdminController
         $affiliate->status = $request->boolean('status', false);
         $affiliate->save();
         return back()->with('success', __('admin::admin.update_success'));
+    }
+
+    public function login(Request $request, $id)
+    {
+        abort_if(!$request->user()->canDo('affiliates.login'), 403);
+        $affiliate = Affiliate::query()->findOrFail($id);
+        Auth::guard('affiliate')->login($affiliate);
+        return redirect(route('affiliate.welcome'));
     }
 }

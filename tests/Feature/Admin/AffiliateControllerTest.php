@@ -53,4 +53,13 @@ class AffiliateControllerTest extends TestCase
         $affiliate->refresh();
         $this->assertEquals(false, $affiliate->status);
     }
+
+    public function test_login()
+    {
+        $admin = Admin::factory()->isOwner()->create();
+        $affiliate = Affiliate::factory()->create();
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.affiliates.login', $affiliate));
+        $this->assertAuthenticated('affiliate');
+        $response->assertRedirect(route('affiliate.welcome'));
+    }
 }
