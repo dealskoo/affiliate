@@ -17,7 +17,7 @@ class Affiliate
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->get('af')) {
+        if ($request->has('af')) {
             Cookie::queue('af_source', $request->get('af'), 1440);
         }
         return $next($request);
