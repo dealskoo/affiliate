@@ -158,6 +158,7 @@ class EventServiceProvider extends ServiceProvider
     protected $routeMiddleware = [
         'affiliate_locale' => \Dealskoo\Affiliate\Http\Middleware\AffiliateLocalization::class,
         'affiliate_active'=> \Dealskoo\Affiliate\Http\Middleware\ActiveAuth::class,
+        'affiliate'=> \Dealskoo\Affiliate\Http\Middleware\Affiliate::class,
     ];
 ```
 
