@@ -4,6 +4,7 @@ namespace Dealskoo\Affiliate\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class Affiliate
 {
@@ -16,8 +17,8 @@ class Affiliate
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->has('af')) {
-            cookie('af_source', $request->get('af'), 1440);
+        if ($request->get('af')) {
+            Cookie::queue('af_source', $request->get('af'), 1440);
         }
         return $next($request);
     }
