@@ -10,11 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authentication;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 use Laravolt\Avatar\Facade as Avatar;
 
 class Affiliate extends Authentication implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, Searchable;
 
     protected $appends = ['avatar_url'];
 
@@ -61,4 +62,14 @@ class Affiliate extends Authentication implements MustVerifyEmail
         $this->notify(new VerifyAffiliateEmail());
     }
 
+    public function toSearchableArray()
+    {
+        return $this->only([
+            'name',
+            'bio',
+            'email',
+            'company_name',
+            'website'
+        ]);
+    }
 }

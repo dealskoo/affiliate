@@ -42,6 +42,7 @@
         "php": ">=7.1",
         "dealskoo/admin": "dev-master",
         "laravel/framework": ">=7.20",
+        "laravel/scout": "^9.4",
         "laravolt/avatar": "^4.1",
         "nwidart/laravel-menus": "^7.0"
     },
