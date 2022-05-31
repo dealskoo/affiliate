@@ -10,13 +10,13 @@ return [
     'logo_sm_dark' => '/vendor/affiliate/images/logo_sm_dark.svg',
     'copyright' => '2014 - ' . date('Y') . ' ' . config('app.name'),
     'footer_menus' => [[
-        'name' => 'about',
+        'name' => 'About',
         'url' => 'affiliate.dashboard'
     ], [
-        'name' => 'support',
+        'name' => 'Support',
         'url' => 'affiliate.register'
     ], [
-        'name' => 'contact_us',
+        'name' => 'Contact US',
         'url' => 'affiliate.login'
     ]],
     'terms_and_conditions_url' => 'affiliate.login',
