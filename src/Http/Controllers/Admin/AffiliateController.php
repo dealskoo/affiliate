@@ -2,7 +2,6 @@
 
 namespace Dealskoo\Affiliate\Http\Controllers\Admin;
 
-use Carbon\Carbon;
 use Dealskoo\Affiliate\Models\Affiliate;
 use Dealskoo\Admin\Http\Controllers\Controller as AdminController;
 use Illuminate\Http\Request;
@@ -46,8 +45,8 @@ class AffiliateController extends AdminController
             $row[] = '<img src="' . $affiliate->avatar_url . '" alt="' . $affiliate->name . '" title="' . $affiliate->name . '" class="me-2 rounded-circle"><p class="m-0 d-inline-block align-middle font-16">' . $affiliate->name . '</p>';
             $row[] = $affiliate->email;
             $row[] = $affiliate->status ? '<span class="badge bg-success">' . __('affiliate::affiliate.active') . '</span>' : '<span class="badge bg-danger">' . __('affiliate::affiliate.inactive') . '</span>';
-            $row[] = Carbon::parse($affiliate->created_at)->format('Y-m-d H:i:s');
-            $row[] = Carbon::parse($affiliate->updated_at)->format('Y-m-d H:i:s');
+            $row[] = $affiliate->created_at->format('Y-m-d H:i:s');
+            $row[] = $affiliate->updated_at->format('Y-m-d H:i:s');
 
             $login_link = '';
             if ($can_login) {

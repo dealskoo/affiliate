@@ -35,7 +35,7 @@
                                                     <a href="{{ route('affiliate.notification.show',$notification) }}">{{ __($notification->data['title']) }}</a>
                                                 </div>
                                                 <div class="col-lg-2">
-                                                    <span>{{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</span>
+                                                    <span>{{ $notification->created_at->diffForHumans() }}</span>
                                                 </div>
                                             </div>
                                         </li>
